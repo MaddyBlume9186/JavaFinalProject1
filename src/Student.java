@@ -7,6 +7,7 @@ public class Student{
     private int[] testScores = new int [5];
     private int total = 0;
     private double average;
+ 
 
     public Student(String[] studentData){
         this.studentData = studentData;
@@ -40,6 +41,16 @@ public class Student{
         setAverage(testScores);
 
     }
+    public String getLetterGrade(){
+        // return letter grade back to main but also logic here or retrun a default grade string etc
+        double avg = getAverage();
+        if (avg >= 90) return "A";
+        if (avg >= 80) return "B";
+        if (avg >= 70) return "C";
+        if (avg >= 60) return "D";
+        return "F";
+    }
+    //added 11/11 by jordan
 
     public int[] getTestScores(){
         return testScores;

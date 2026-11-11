@@ -1,10 +1,16 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 public class StudentManagementSystem {
-
+    
+    // new scanner for user input to interact with system
+// new scanner for user input to interact with system
+  
     //handling all management operations
 
     //Use scanner for user input to interact with system
@@ -88,5 +94,5 @@ public class StudentManagementSystem {
 
 
 
-}}
-
+     }
+}
