@@ -1,0 +1,7 @@
+1234, Donald Duck, Physics, 89, 85, 49, 75, 95
+1234, Donald Duck, Calculus, 78, 84, 96, 82, 94
+3694, Roger Rabbit, Art History, 84, 85, 100, 100, 96
+2589, Pippi Longstocking, Business Analytics, 82, 78, 92, 94, 82
+2589, Pippi Longstocking, Calculus, 56, 85, 72, 68, 82
+6945, Jeremiah Bullfrog, Physics, 74, 88, 94, 69, 86
+6945, Jeremiah Bullfrog, Art History, 99, 96, 100, 82, 94
