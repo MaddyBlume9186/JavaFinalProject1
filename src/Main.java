@@ -89,7 +89,7 @@ public class Main{
         for (Student s : list)
             System.out.printf("%d. %s - %.2f (%s) %n", rank++, s.getName(), s.getAverage(), s.getLetterGrade());
     }
-        if (list.isEmpty()) { System.out.println("No students. ");
+        if(list.isEmpty()) { System.out.println("No students. ");
     }
     //     input helpers and excpetion handling in case of bad input data
     
