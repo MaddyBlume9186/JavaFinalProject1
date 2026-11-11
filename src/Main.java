@@ -7,7 +7,8 @@ public class Main{
     private static final Scanner in = new Scanner(System.in);
     private static final StudentManagementSystem sms = new StudentManagementSystem();
     private static final String FILE = "student.txt";
-    
+
+    // interface choices for user 
     public static void main(String[] args){
         boolean running = true;
         while (running) {
