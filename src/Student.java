@@ -41,6 +41,16 @@ public class Student{
 
     }
 
+     public String getLetterGrade(){
+        // return letter grade back to main but also logic here or retrun a default grade
+        double avg = getAverage();
+        if (avg >= 90) return "A";
+        if (avg >= 80) return "B";
+        if (avg >= 70) return "C";
+        if (avg >= 60) return "D";
+        return "F";
+    }
+
     public int[] getTestScores(){
         return testScores;
     }
