@@ -42,7 +42,7 @@ public class Student{
     }
 
      public String getLetterGrade(){
-        // return letter grade back to main but also logic here or retrun a default grade
+        // return letter grade back to main but also logic here or retrun a default grade/// i need to fix this. #########
         double avg = getAverage();
         if (avg >= 90) return "A";
         if (avg >= 80) return "B";
