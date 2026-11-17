@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.Scanner;
 
-//menu for the stduent managment system. //
+//menu for the student management system. //
 
 public class Main{
     private static final Scanner in = new Scanner(System.in);
@@ -31,7 +31,7 @@ public class Main{
     }
     //interface for options on students grades and other information.
     private static void printMenu(){
-        System.out.println("\n=== Student Management Sustem ===");
+        System.out.println("\n=== Student Management System ===");
         System.out.println("1. Add Student         2. Remove student");
         System.out.println("3. Update              4. Add/Update grade");
         System.out.println("5. View student        6. View all (averages)");
@@ -52,14 +52,14 @@ public class Main{
         System.out.println(sms.removeStudent(readLine("ID:")) ? "Removed." :  "Student not found.");
     }
     private static void updateName(){
-        Student s = sms.getStudent(readLine("ID: "));
+        Student s = sms.checkStudent(readLine("ID: "));
         if (s == null) { System.out.println("Student not found. "); return; }
         String name = readLine("New name: ");
         if (!name.isEmpty()) { s.setName(name); System.out.println("Updated.");
     }
     }  
     private static void addGrade() {
-        Student s = sms.getStudent(readLine("ID: "));
+        Student s = sms.checkStudent(readLine("ID: "));
         if (s == null) { System.out.println("Student not found. "); return;}
         String subject = readLine("Subject: ");
         if (subject.isEmpty()) { System.out.println("Subject required. "); return;}
@@ -71,12 +71,12 @@ public class Main{
         }
     }
     private static void viewStudent(){
-        Student s = sms.getStudent(readLine("ID: "));
+        Student s = sms.checkStudent(readLine("ID: "));
         System.out.println(s == null ? "Student not found." : s);
     }
     
     private static void viewAll(){
-        if (sms.getAll().isEmpty()) { System.out.println("No Students. "); return;}
+        //if (sms.getAll().isEmpty()) { System.out.println("No Students. "); return;}
         for (Student s : sms.getAll())
             System.out.printf("%s - %s: avg %.2f (%s)%n", s.getID(), s.getName(), s.getAverage(), s.getLetterGrade());
     }
@@ -103,7 +103,7 @@ public class Main{
     private static double readDouble(String prompt){
         while (true) {
             try { return Double.parseDouble(readLine(prompt));}
-            catch (NumberFormatException e) {System.out.println("Please eneter a number. "); }
+            catch (NumberFormatException e) {System.out.println("Please enter a number. "); }
         }
     }
   }

@@ -16,6 +16,15 @@ public class Student{
         setTestScores(studentData[3], studentData[4], studentData[5], studentData[6], studentData[7]);
     }
 
+    public Student (int id, String name){
+        studID = id;
+        this.name = name;
+    }
+
+    public void GraduateStudent(int id, String name){
+
+    }
+
     public void setID(String id){
         studID = Integer.parseInt(id);
     }
@@ -23,6 +32,9 @@ public class Student{
         return studID;
     }
 
+    public void setName(String name){
+        this.name = name;
+    }
     public String getName(){
         return name;
     }

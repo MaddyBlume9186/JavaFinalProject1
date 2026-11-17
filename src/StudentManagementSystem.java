@@ -1,10 +1,10 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 public class StudentManagementSystem {
-
+    private ArrayList<String> studentData = new ArrayList<>();
+    private Student[] studentObjects = new Student[studentData.size()];
     //handling all management operations
 
     //Use scanner for user input to interact with system
@@ -26,7 +26,7 @@ public class StudentManagementSystem {
     average grade for each student
     highest an lowest grades for a specific subject
     list of students sorted by grade*/
-    public static int StudentMenu(){
+  /*  public static int StudentMenu(){
         //Menu of options to work in StudentManagement System
         int selection;
         Scanner keyboard = new Scanner(System.in);
@@ -44,49 +44,82 @@ public class StudentManagementSystem {
             selection = keyboard.nextInt();
         }
         return selection;
-    }
+    }*/
 
-     public static void main(String[] args)  {
-        //Opening file and scanning contents
-        String filename = ("C:\\Users\\madel\\OneDrive\\Desktop\\JavaFinalProject\\src\\Student.txt");
-        File studentFile = new File(filename);
-        ArrayList<String> studentData = new ArrayList<>();
-        int menuSelection;
-        //Try catch blocks to handle errors
-        try (Scanner inputFile = new Scanner(studentFile)) {
-            while (inputFile.hasNextLine()) {
-                studentData.add(inputFile.nextLine());
-            }
-        }
-
-        catch (FileNotFoundException e){
-            System.out.println("File not found.");
-        }
+     public void openFile() {
+         //Opening file and scanning contents
+         String filename = ("Student.txt");
+         File studentFile = new File(filename);
+         //Try catch blocks to handle file reading errors
+         try (Scanner inputFile = new Scanner(studentFile)) {
+             while (inputFile.hasNextLine()) {
+                 studentData.add(inputFile.nextLine());
+             }
+         } catch (FileNotFoundException e) {
+             System.out.println("File not found. " + e.getMessage());
+         }
 
         /* Creating matrix to separate data points for each line
         and then sending each array to Student Class */
-        String[][] students = new String[studentData.size()][];
+         String[][] students = new String[studentData.size()][];
 
-        Student[] studentObjects = new Student[studentData.size()];
-
-        for(int i = 0; i < studentData.size(); i++) {
-            students[i] = studentData.get(i).split(", ");
-            studentObjects[i] = new Student(students[i]);
-        }
-
-
-        //Calling Menu
-        menuSelection = StudentMenu();
-
-        /*if (menuSelection == 1){
-
-        }
-        */
+         for (int i = 0; i < studentData.size(); i++) {
+             students[i] = studentData.get(i).split(", ");
+             studentObjects[i] = new Student(students[i]);
+         }
+     }
 
 
 
+     public Student checkStudent(String ID){
+         openFile();
+         int studID = Integer.parseInt(ID);
+         Student setReturn = null;
+         for (int i = 0; i < studentData.size(); i++){
+             if(studentObjects[i].getID()== studID){
+                 setReturn = studentObjects[i];
+                 break;
+             }
+         }
+         return setReturn;
+     }
+
+     public Student[] getAll(){
+         openFile();
+         return studentObjects;
+     }
+
+     public boolean addStudent(Student newStud ){
+         openFile();
+         boolean added = true;
+         for(int g = 0; g < studentData.size(); g++){
+             if (studentObjects[g].getID() == newStud.getID()){
+                 added = false;
+                 break;
+             }
+         }
+         if (added){
+             try(PrintWriter out = new PrintWriter(new FileWriter("Student.txt", true))){
+                 out.println(newStud);
+             }
+             catch(IOException e){
+                 System.err.println("Could not add to file: "+ e.getMessage());
+             }
+         }
+
+         return added;
+     }
 
 
 
-}}
+
+
+
+         
+
+
+
+
+
+}
 
