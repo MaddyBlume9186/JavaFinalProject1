@@ -23,7 +23,7 @@ public class Subject {
         this.grade = grade;
     }
 
-    @Override
+    @Override // intentionally replacing default toString method here. 
     public String toString() {
         return name + " : " + grade;
     }
