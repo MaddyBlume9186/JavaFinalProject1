@@ -13,7 +13,8 @@ public class Main{
         boolean running = true;
         while (running) {
             printMenu();
-            switch (readInt("Choose: ")){
+            int choice = readInt("Choose:  ");
+            switch (choice) {
                 case 1: addStudent(); break;
                 case 2: removeStudent(); break;
                 case 3: updateName(); break;
@@ -25,6 +26,9 @@ public class Main{
                 case 9: System.out.println(sms.save(FILE)); break;
                 case 10: System.out.println(sms.load(FILE)); break;
                 case 0: running = false; break;
+
+                default:
+                    System.out.println("Invalid choice. Please try again with a number of 0-10.");
             }           
         }
         System.out.println("Goodbye!");
@@ -43,67 +47,130 @@ public class Main{
     private static void addStudent(){
         String id = readLine("ID: ");
         String name = readLine("Name: ");
-        if (id.isEmpty()  ||  name.isEmpty()) { System.out.println("ID and name are required. "); return;}
-        boolean grad = readLine("Graduate student? (y/n): ").equalsIgnoreCase("y");
-        Student s = grad ? new GraduateStudent(new String[]{id, name}): new Student(new String[]{id, name});
-        System.out.println(sms.addStudent(s) ? "Student added." : "ID already exists.");
+        if (id.isEmpty()  ||  name.isEmpty()) {
+            System.out.println("ID and name are required.");
+            return;
     }
+
+    String gradType = readLine("Graduate student? (y/n): ");
+    Student s;
+    if (gradType.equalsIgnoreCase("y")) {
+        s = new Student(new String[]{id, name, "Graduate", "0", "0", "0", "0", "0"});
+    } else {
+        s =  new Student(new String[]{id, name, "Undergraduate", "0", "0", "0", "0", "0"});
+    }
+
+    boolean success = sms.addStudent(s);
+        if (success) {
+            System.out.println("Student added.");
+        } else {
+            System.out.println("ID already exists.");
+        }
+    }
+
     private static void removeStudent(){
-        System.out.println(sms.removeStudent(readLine("ID:")) ? "Removed." :  "Student not found.");
+        String id = readLine("ID: ");
+        boolean success = sms.removeStudent(id);
+        if (success) {
+            System.out.println("Removed.");
+                } else {
+            System.out.println("Student not found.");
+        }
     }
+    
     private static void updateName(){
-        Student s = sms.checkStudent(readLine("ID: "));
-        if (s == null) { System.out.println("Student not found. "); return; }
-        String name = readLine("New name: ");
-        if (!name.isEmpty()) { s.setName(name); System.out.println("Updated.");
+        Student s = sms.getStudent(readLine("ID: "));
+        if (s == null) {
+            System.out.println("Student not found.");
+            return;
     }
+        String name = readLine("New name: ");
+        if (!name.isEmpty()) {
+            s.setName(name);
+            System.out.println("Updated.");
+        }
     }  
+    
     private static void addGrade() {
-        Student s = sms.checkStudent(readLine("ID: "));
-        if (s == null) { System.out.println("Student not found. "); return;}
+        Student s = sms.getStudent(readLine("ID: "));
+        if (s == null) { 
+            System.out.println("Student not found. "); 
+            return;
+        }
         String subject = readLine("Subject: ");
-        if (subject.isEmpty()) { System.out.println("Subject required. "); return;}
+        if (subject.isEmpty()) { 
+            System.out.println("Subject required. "); 
+            return;
+        }
         try{
-            s.setGrade(subject, readDouble("Grade (0-100): "));
+            double grade = readDouble("Grade (0-100): ");
+            s.setTestScore(0, (int) grade);
             System.out.println("Grade Saved.");
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
         }
     }
+    
     private static void viewStudent(){
-        Student s = sms.checkStudent(readLine("ID: "));
-        System.out.println(s == null ? "Student not found." : s);
+        Student s = sms.getStudent(readLine("ID: "));
+        if (s == null) {
+        System.out.println("Student not found.");
+        } else {
+            System.out.println(s);
+        }
     }
     
     private static void viewAll(){
-        //if (sms.getAll().isEmpty()) { System.out.println("No Students. "); return;}
-        for (Student s : sms.getAll())
-            System.out.printf("%s - %s: avg %.2f (%s)%n", s.getID(), s.getName(), s.getAverage(), s.getLetterGrade());
+        Student[] allStudents = sms.getAll();
+        if (allStudents == null || allStudents.length == 0) {
+            System.out.println("No Students.");
+            return;
+        }
+        for (Students s : allStudents) {
+            if (s != null) {
+            System.out.printf("%s - %s: avg %.2f (%s)\n", s.getID(), s.getName(), s.getAverage(), s.getLetterGrade());
+        }
     }
+    }
+    
     private static void subjectReport(){
-        System.out.println(sms.highLowForSubject(readLine("Subject: ")));
+        String subject = readLine("Subject: ");
+        System.out.println(sms.highLowForSubject(readLine("Subject"));
     }
     
     private static void rankingReport(){
         List<Student> list = sms.sortedByAverage();
+        if (list.isEmpty()) {
+            System.out.println("No students.");
+            return;
+    }
         int rank = 1;
-        for (Student s : list)
-            System.out.printf("%d. %s - %.2f (%s) %n", rank++, s.getName(), s.getAverage(), s.getLetterGrade());
+        for (Student s : list) {
+            System.out.printf("%d. %s - %.2f (%s)\n", rank++, s.getName(), s.getAverage(), s.getLetterGrade());
+     }
     }
-        if(list.isEmpty()) { System.out.println("No students. ");
-    }
-    //     input helpers and excpetion handling in case of bad input data
     
-    private static String readLine(String prompt) {System.out.println(prompt); return in.nextLine().trim();}
+    private static String readLine(String prompt) {
+        System.out.println(prompt); 
+        return in.nextLine().trim();
+    }
     private static int readInt(String prompt){
-        try { return Integer.parseInt(readLine(prompt));}
-        catch (NumberFormatException e) {return -1;}
+        try {
+            return Integer.parseInt(readLine(prompt));
+        }
+        catch (NumberFormatException e) {
+            return -1;
+        }
     }
     
     private static double readDouble(String prompt){
         while (true) {
-            try { return Double.parseDouble(readLine(prompt));}
-            catch (NumberFormatException e) {System.out.println("Please enter a number. "); }
+            try { 
+                return Double.parseDouble(readLine(prompt));
+            }
+            catch (NumberFormatException e) {
+                System.out.println("Please enter a number."); 
+            }
         }
     }
   }

@@ -1,10 +1,14 @@
 import java.io.*;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Array;
+import java.util.Comparator;
 import java.util.Scanner;
+
+
 public class StudentManagementSystem {
     private ArrayList<String> studentData = new ArrayList<>();
-    private Student[] studentObjects = new Student[studentData.size()];
+    private Student[] studentObjects;
     //handling all management operations
 
     //Use scanner for user input to interact with system
@@ -48,29 +52,50 @@ public class StudentManagementSystem {
 
      public void openFile() {
          //Opening file and scanning contents
+         studentData.clear();
          String filename = ("Student.txt");
          File studentFile = new File(filename);
          //Try catch blocks to handle file reading errors
-         try (Scanner inputFile = new Scanner(studentFile)) {
-             while (inputFile.hasNextLine()) {
+         try{
+             if (!studentFile.exists()) {
+                 studentFile.createNewFile();
+             }
+             Scanner inputFile = new Scanner(studentFile);
+             while (inputFile.hasNextLine()){
                  studentData.add(inputFile.nextLine());
              }
-         } catch (FileNotFoundException e) {
-             System.out.println("File not found. " + e.getMessage());
+             inputFile.close();
+         } catch (IOException e) {
+             System.out.println("Error handling file. " + e.getMessage());
          }
 
-        /* Creating matrix to separate data points for each line
-        and then sending each array to Student Class */
-         String[][] students = new String[studentData.size()][];
-
+         studentObjects = new Student[studentData.size()];
          for (int i = 0; i < studentData.size(); i++) {
-             students[i] = studentData.get(i).split(", ");
-             studentObjects[i] = new Student(students[i]);
+             String[] students = studentData.get(i).split(",");
+                 studentObjects[i] = new Student(students);
          }
      }
-
-
-
+     
+     public String save(String filename) {
+         try {
+             FileWriter fw = new FileWriter(filename);
+             PrintWriter out = new PrintWriter(fw);
+             for (int i = 0; i < studentData.size(); i++) {
+                 out.println(studentData.get(i));
+             }
+             out.close();
+             return "Successfully saved to " + filename;
+         }
+         catch (IOException e) {
+             return "Error saving file: " e.getMessage();
+          }
+         }
+     
+     public String load(String filename){
+         openFile();
+         return "Successfully loaded records from " + filename;
+     }
+             
      public Student checkStudent(String ID){
          openFile();
          int studID = Integer.parseInt(ID);
@@ -109,6 +134,27 @@ public class StudentManagementSystem {
 
          return added;
      }
+     
+     public boolean removeStudent(String id) {
+         openFile();
+         int targetID = Integer.parseInt(id);
+                 boolean removed = false;
+                 
+         for (int i = 0; i < studentObjects.length; i++) {
+             if (studentObjects[i] !=null && Integer.parseInt(studentObjects[i].getID().trim()) == targetID) {
+                 studentData.remove(i);
+                 removed = true;
+                 break;
+             }
+         }
+         
+         if (removed) {
+             save("Student.txt");
+             openFile();
+         }
+         return removed;
+     }
+}
 
 
 
@@ -120,6 +166,4 @@ public class StudentManagementSystem {
 
 
 
-
-}
 
