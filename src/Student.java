@@ -7,7 +7,6 @@ public class Student{
     private int[] testScores = new int [5];
     private int total = 0;
     private double average;
- 
 
     public Student(String[] studentData){
         this.studentData = studentData;
@@ -17,6 +16,15 @@ public class Student{
         setTestScores(studentData[3], studentData[4], studentData[5], studentData[6], studentData[7]);
     }
 
+    public Student (int id, String name){
+        studID = id;
+        this.name = name;
+    }
+
+    public void GraduateStudent(int id, String name){
+
+    }
+
     public void setID(String id){
         studID = Integer.parseInt(id);
     }
@@ -24,6 +32,9 @@ public class Student{
         return studID;
     }
 
+    public void setName(String name){
+        this.name = name;
+    }
     public String getName(){
         return name;
     }
@@ -41,8 +52,9 @@ public class Student{
         setAverage(testScores);
 
     }
-    public String getLetterGrade(){
-        // return letter grade back to main but also logic here or retrun a default grade string etc
+
+     public String getLetterGrade(){
+        // return letter grade back to main but also logic here or retrun a default grade/// i need to fix this. #########
         double avg = getAverage();
         if (avg >= 90) return "A";
         if (avg >= 80) return "B";
@@ -50,7 +62,6 @@ public class Student{
         if (avg >= 60) return "D";
         return "F";
     }
-    //added 11/11 by jordan
 
     public int[] getTestScores(){
         return testScores;

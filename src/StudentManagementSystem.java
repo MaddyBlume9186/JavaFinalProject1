@@ -1,16 +1,14 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.io.PrintWriter;
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Array;
+import java.util.Comparator;
 import java.util.Scanner;
+
+
 public class StudentManagementSystem {
-    
-    // new scanner for user input to interact with system
-// new scanner for user input to interact with system
-  
+    private ArrayList<String> studentData = new ArrayList<>();
+    private Student[] studentObjects;
     //handling all management operations
 
     //Use scanner for user input to interact with system
@@ -32,7 +30,7 @@ public class StudentManagementSystem {
     average grade for each student
     highest an lowest grades for a specific subject
     list of students sorted by grade*/
-    public static int StudentMenu(){
+  /*  public static int StudentMenu(){
         //Menu of options to work in StudentManagement System
         int selection;
         Scanner keyboard = new Scanner(System.in);
@@ -50,49 +48,122 @@ public class StudentManagementSystem {
             selection = keyboard.nextInt();
         }
         return selection;
-    }
+    }*/
 
-     public static void main(String[] args)  {
-        //Opening file and scanning contents
-        String filename = ("C:\\Users\\madel\\OneDrive\\Desktop\\JavaFinalProject\\src\\Student.txt");
-        File studentFile = new File(filename);
-        ArrayList<String> studentData = new ArrayList<>();
-        int menuSelection;
-        //Try catch blocks to handle errors
-        try (Scanner inputFile = new Scanner(studentFile)) {
-            while (inputFile.hasNextLine()) {
-                studentData.add(inputFile.nextLine());
-            }
-        }
+     public void openFile() {
+         //Opening file and scanning contents
+         studentData.clear();
+         String filename = ("Student.txt");
+         File studentFile = new File(filename);
+         //Try catch blocks to handle file reading errors
+         try{
+             if (!studentFile.exists()) {
+                 studentFile.createNewFile();
+             }
+             Scanner inputFile = new Scanner(studentFile);
+             while (inputFile.hasNextLine()){
+                 studentData.add(inputFile.nextLine());
+             }
+             inputFile.close();
+         } catch (IOException e) {
+             System.out.println("Error handling file. " + e.getMessage());
+         }
 
-        catch (FileNotFoundException e){
-            System.out.println("File not found.");
-        }
+         studentObjects = new Student[studentData.size()];
+         for (int i = 0; i < studentData.size(); i++) {
+             String[] students = studentData.get(i).split(",");
+                 studentObjects[i] = new Student(students);
+         }
+     }
+     
+     public String save(String filename) {
+         try {
+             FileWriter fw = new FileWriter(filename);
+             PrintWriter out = new PrintWriter(fw);
+             for (int i = 0; i < studentData.size(); i++) {
+                 out.println(studentData.get(i));
+             }
+             out.close();
+             return "Successfully saved to " + filename;
+         }
+         catch (IOException e) {
+             return "Error saving file: " e.getMessage();
+          }
+         }
+     
+     public String load(String filename){
+         openFile();
+         return "Successfully loaded records from " + filename;
+     }
+             
+     public Student checkStudent(String ID){
+         openFile();
+         int studID = Integer.parseInt(ID);
+         Student setReturn = null;
+         for (int i = 0; i < studentData.size(); i++){
+             if(studentObjects[i].getID()== studID){
+                 setReturn = studentObjects[i];
+                 break;
+             }
+         }
+         return setReturn;
+     }
 
-        /* Creating matrix to separate data points for each line
-        and then sending each array to Student Class */
-        String[][] students = new String[studentData.size()][];
+     public Student[] getAll(){
+         openFile();
+         return studentObjects;
+     }
 
-        Student[] studentObjects = new Student[studentData.size()];
+     public boolean addStudent(Student newStud ){
+         openFile();
+         boolean added = true;
+         for(int g = 0; g < studentData.size(); g++){
+             if (studentObjects[g].getID() == newStud.getID()){
+                 added = false;
+                 break;
+             }
+         }
+         if (added){
+             try(PrintWriter out = new PrintWriter(new FileWriter("Student.txt", true))){
+                 out.println(newStud);
+             }
+             catch(IOException e){
+                 System.err.println("Could not add to file: "+ e.getMessage());
+             }
+         }
 
-        for(int i = 0; i < studentData.size(); i++) {
-            students[i] = studentData.get(i).split(", ");
-            studentObjects[i] = new Student(students[i]);
-        }
-
-
-        //Calling Menu
-        menuSelection = StudentMenu();
-
-        /*if (menuSelection == 1){
-
-        }
-        */
-
-
-
-
-
-
+         return added;
+     }
+     
+     public boolean removeStudent(String id) {
+         openFile();
+         int targetID = Integer.parseInt(id);
+                 boolean removed = false;
+                 
+         for (int i = 0; i < studentObjects.length; i++) {
+             if (studentObjects[i] !=null && Integer.parseInt(studentObjects[i].getID().trim()) == targetID) {
+                 studentData.remove(i);
+                 removed = true;
+                 break;
+             }
+         }
+         
+         if (removed) {
+             save("Student.txt");
+             openFile();
+         }
+         return removed;
      }
 }
+
+
+
+
+
+
+         
+
+
+
+
+
