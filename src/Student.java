@@ -78,6 +78,10 @@ public class Student{
         return average;
     }
 
+    @Override
+    public String toString(){
+        return studID + "," + name + "," subject + "," + testScores[0] + "," + testScores[1] + "," testScores[2] + "," + testScores[3] + "," + testScores[4];
+    }
 
 
 }
