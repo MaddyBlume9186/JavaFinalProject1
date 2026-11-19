@@ -78,6 +78,18 @@ public class Student{
         return average;
     }
 
-
+    @Override
+    public String toString(){
+        return studID + "," + name + "," + subject + "," + testScores[0] + "," + testScores[1] + "," + testScores[2] + "," + testScores[3] + "," + testScores[4];
+    }
+public void setTestScore(int index, int score) {
+    if (index < 0 || index >= testScores.length {
+        throw new IllegalArguementException("Test number must be 1-5");
+    }
+    if (score < 0 || score > 100){
+        throw new IllegalArguementException("Grade must be between 0 and 100");
+    }
+    testScores[index] = score;
+    setAverage(testScores);
 
 }
