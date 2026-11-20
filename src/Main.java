@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -6,10 +7,10 @@ import java.util.Scanner;
 public class Main{
     private static final Scanner in = new Scanner(System.in);
     private static final StudentManagementSystem sms = new StudentManagementSystem();
-    private static final String FILE = "student.txt";
+    private static final String FILE = "src/Student.txt";
 
     // interface choices for user 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException, InvalidInput {
         boolean running = true;
         while (running) {
             printMenu();
@@ -44,29 +45,28 @@ public class Main{
         System.out.println("0. Exit");
     }
     
-    private static void addStudent(){
+    private static void addStudent() throws IOException {
         String id = readLine("ID: ");
         String name = readLine("Name: ");
         if (id.isEmpty()  ||  name.isEmpty()) {
             System.out.println("ID and name are required.");
             return;
     }
-
-    String gradType = readLine("Graduate student? (y/n): ");
-    Student s;
-    if (gradType.equalsIgnoreCase("y")) {
-        s = new Student(new String[]{id, name, "Graduate", "0", "0", "0", "0", "0"});
-    } else {
-        s =  new Student(new String[]{id, name, "Undergraduate", "0", "0", "0", "0", "0"});
-    }
-
-    boolean success = sms.addStudent(s);
-        if (success) {
-            System.out.println("Student added.");
+        String gradType = readLine("Graduate student? (y/n): ");
+        Student s;
+        if (gradType.equalsIgnoreCase("y")) {
+            s = new Student(new String[]{id, name, "Graduate", null,"0", "0", "0", "0", "0"});
         } else {
-            System.out.println("ID already exists.");
+            s =  new Student(new String[]{id, name, "Undergraduate", null, "0", "0", "0", "0", "0"});
         }
-    }
+
+        boolean success = sms.addStudent(s);
+            if (success) {
+                System.out.println("Student added.");
+            } else {
+                System.out.println("ID already exists.");
+            }
+        }
 
     private static void removeStudent(){
         String id = readLine("ID: ");
@@ -79,7 +79,7 @@ public class Main{
     }
     
     private static void updateName(){
-        Student s = sms.getStudent(readLine("ID: "));
+        Student s = sms.checkStudent(readLine("ID: "));
         if (s == null) {
             System.out.println("Student not found.");
             return;
@@ -91,8 +91,8 @@ public class Main{
         }
     }  
     
-    private static void addGrade() {
-        Student s = sms.getStudent(readLine("ID: "));
+    private static void addGrade() throws InvalidInput{
+        Student s = sms.checkStudent(readLine("ID: "));
         if (s == null) { 
             System.out.println("Student not found. "); 
             return;
@@ -103,8 +103,8 @@ public class Main{
             return;
         }
         try{
-            double grade = readDouble("Grade (0-100): ");
-            s.setTestScore(0, (int) grade);
+            int grade = readInt("Grade (0-100): ");
+            s.setTestScore(grade);
             System.out.println("Grade Saved.");
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
@@ -112,7 +112,7 @@ public class Main{
     }
     
     private static void viewStudent(){
-        Student s = sms.getStudent(readLine("ID: "));
+        Student s = sms.checkStudent(readLine("ID: "));
         if (s == null) {
         System.out.println("Student not found.");
         } else {
@@ -126,16 +126,16 @@ public class Main{
             System.out.println("No Students.");
             return;
         }
-        for (Students s : allStudents) {
+        for (Student s : allStudents) {
             if (s != null) {
-            System.out.printf("%s - %s: avg %.2f (%s)\n", s.getID(), s.getName(), s.getAverage(), s.getLetterGrade());
+            System.out.printf("%s - %s: %s: Average Grade %.2f (%s)\n", s.getID(), s.getName(), s.getSubject(), s.getAverage(), s.getLetterGrade());
         }
     }
     }
     
     private static void subjectReport(){
         String subject = readLine("Subject: ");
-        System.out.println(sms.highLowForSubject(readLine("Subject"));
+        sms.highLowForSubject(subject);
     }
     
     private static void rankingReport(){
@@ -146,7 +146,7 @@ public class Main{
     }
         int rank = 1;
         for (Student s : list) {
-            System.out.printf("%d. %s - %.2f (%s)\n", rank++, s.getName(), s.getAverage(), s.getLetterGrade());
+            System.out.printf("%d. %s - %s: %.2f%% (%s)\n", rank++, s.getName(), s.getSubject(),s.getAverage(), s.getLetterGrade());
      }
     }
     

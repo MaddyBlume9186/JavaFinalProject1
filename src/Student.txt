@@ -1,7 +1,108 @@
-1234, Donald Duck, Physics, 89, 85, 49, 75, 95
-1234, Donald Duck, Calculus, 78, 84, 96, 82, 94
-3694, Roger Rabbit, Art History, 84, 85, 100, 100, 96
-2589, Pippi Longstocking, Business Analytics, 82, 78, 92, 94, 82
-2589, Pippi Longstocking, Calculus, 56, 85, 72, 68, 82
-6945, Jeremiah Bullfrog, Physics, 74, 88, 94, 69, 86
-6945, Jeremiah Bullfrog, Art History, 99, 96, 100, 82, 94
+4821, Amelia Thornberry, Undergraduate, Biology, 91, 85, 88, 94, 90
+1234, Donald Duck, Undergraduate, Statistics, 92, 85, 78, 89, 94
+6945, Jeremiah Bullfrog, Graduate, Linear Algebra, 68, 75, 82, 79, 84
+8192, Penelope Watterson, Graduate, Psychology, 96, 93, 98, 91, 95
+3694, Roger Rabbit, Undergraduate, Psychology, 91, 87, 95, 89, 93
+7356, Felix Montgomery, Undergraduate, Computer Science, 78, 85, 91, 82, 88
+2589, Pippi Longstocking, Undergraduate, Data Structures, 94, 89, 96, 91, 87
+5263, Oliver Pickles, Undergraduate, Accounting, 74, 81, 79, 86, 83
+4821, Amelia Thornberry, Undergraduate, Organic Chemistry, 76, 82, 91, 68, 85
+9472, Cassandra Moon, Graduate, Linear Algebra, 93, 96, 89, 94, 98
+3694, Roger Rabbit, Undergraduate, Microeconomics, 72, 81, 86, 78, 84
+1638, Barnaby Fizzlebottom, Graduate, Business Analytics, 77, 84, 80, 89, 85
+6945, Jeremiah Bullfrog, Graduate, Business Analytics, 91, 94, 88, 96, 90
+8192, Penelope Watterson, Graduate, Art History, 89, 94, 91, 97, 92
+5263, Oliver Pickles, Undergraduate, Statistics, 83, 77, 89, 85, 92
+1234, Donald Duck, Undergraduate, English Literature, 88, 92, 84, 79, 90
+6048, Beatrice Bumble, Undergraduate, Chemistry, 82, 89, 85, 91, 87
+4821, Amelia Thornberry, Undergraduate, Calculus, 65, 74, 82, 71, 79
+7356, Felix Montgomery, Undergraduate, Calculus, 69, 76, 83, 72, 80
+9472, Cassandra Moon, Graduate, Psychology, 85, 89, 92, 78, 87
+1234, Donald Duck, Undergraduate, Microeconomics, 81, 73, 88, 92, 86
+2589, Pippi Longstocking, Undergraduate, Art History, 98, 95, 100, 91, 97
+3917, Theodore Grimsby, Graduate, Microeconomics, 68, 75, 81, 72, 79
+3694, Roger Rabbit, Undergraduate, Organic Chemistry, 78, 85, 69, 82, 91
+8192, Penelope Watterson, Graduate, Statistics, 74, 82, 77, 89, 80
+9472, Cassandra Moon, Graduate, English Literature, 86, 91, 95, 88, 92
+2589, Pippi Longstocking, Undergraduate, English Literature, 89, 93, 86, 95, 91
+1234, Donald Duck, Undergraduate, Data Structures, 95, 91, 87, 93, 89
+6048, Beatrice Bumble, Undergraduate, Statistics, 95, 90, 93, 97, 92
+3694, Roger Rabbit, Undergraduate, Linear Algebra, 83, 76, 91, 85, 88
+6945, Jeremiah Bullfrog, Graduate, Microeconomics, 62, 71, 75, 68, 79
+8192, Penelope Watterson, Graduate, Psychology, 96, 93, 98, 91, 95
+1234, Donald Duck, Undergraduate, Psychology, 84, 89, 92, 86, 90
+5263, Oliver Pickles, Undergraduate, Psychology, 96, 92, 89, 94, 98
+4821, Amelia Thornberry, Undergraduate, Business Analytics, 88, 92, 85, 79, 94
+7356, Felix Montgomery, Undergraduate, Computer Science, 78, 85, 91, 82, 88
+8192, Penelope Watterson, Graduate, English Literature, 90, 85, 93, 87, 91
+1234, Donald Duck, Undergraduate, Linear Algebra, 67, 75, 81, 72, 78
+5263, Oliver Pickles, Undergraduate, Data Structures, 88, 92, 85, 90, 94
+2589, Pippi Longstocking, Undergraduate, Organic Chemistry, 72, 81, 77, 85, 89
+3694, Roger Rabbit, Undergraduate, Statistics, 94, 96, 91, 89, 97
+6048, Beatrice Bumble, Undergraduate, Chemistry, 82, 89, 85, 91, 87
+6945, Jeremiah Bullfrog, Graduate, Data Structures, 79, 84, 73, 88, 82
+1234, Donald Duck, Undergraduate, Art History, 95, 89, 97, 92, 94
+3694, Roger Rabbit, Undergraduate, Physics, 77, 82, 74, 89, 85
+2589, Pippi Longstocking, Undergraduate, Linear Algebra, 91, 86, 94, 89, 93
+6945, Jeremiah Bullfrog, Graduate, Organic Chemistry, 58, 69, 72, 64, 75
+1638, Barnaby Fizzlebottom, Graduate, Organic Chemistry, 71, 79, 85, 76, 82
+1234, Donald Duck, Undergraduate, Business Analytics, 87, 93, 85, 90, 88
+4821, Amelia Thornberry, Undergraduate, English Literature, 92, 88, 95, 91, 89
+5263, Oliver Pickles, Undergraduate, Data Structures, 78, 84, 91, 86, 80
+6945, Jeremiah Bullfrog, Graduate, Calculus, 81, 76, 84, 79, 88
+1234, Donald Duck, Undergraduate, Organic Chemistry, 90, 86, 93, 88, 95
+3694, Roger Rabbit, Undergraduate, Microeconomics, 69, 75, 82, 77, 84
+4821, Amelia Thornberry, Undergraduate, Statistics, 95, 91, 97, 93, 96
+6945, Jeremiah Bullfrog, Graduate, Psychology, 73, 81, 86, 78, 82
+1234, Donald Duck, Undergraduate, Physics, 82, 79, 91, 85, 88
+3694, Roger Rabbit, Undergraduate, Art History, 96, 93, 98, 95, 100
+2589, Pippi Longstocking, Undergraduate, Business Analytics, 88, 84, 91, 87, 93
+8192, Penelope Watterson, Graduate, Linear Algebra, 75, 82, 69, 78, 85
+1234, Donald Duck, Undergraduate, English Literature, 71, 80, 85, 76, 82
+3694, Roger Rabbit, Undergraduate, Data Structures, 89, 94, 87, 91, 95
+4821, Amelia Thornberry, Undergraduate, Psychology, 82, 88, 91, 85, 90
+9472, Cassandra Moon, Graduate, Statistics, 93, 87, 90, 84, 89
+1234, Donald Duck, Undergraduate, Microeconomics, 64, 72, 79, 68, 75
+4821, Amelia Thornberry, Undergraduate, Organic Chemistry, 85, 91, 88, 82, 94
+5263, Oliver Pickles, Undergraduate, Linear Algebra, 76, 83, 89, 81, 86
+6945, Jeremiah Bullfrog, Graduate, Business Analytics, 97, 92, 95, 89, 94
+1234, Donald Duck, Undergraduate, Calculus, 88, 82, 91, 85, 93
+3694, Roger Rabbit, Undergraduate, Psychology, 79, 86, 83, 91, 87
+2589, Pippi Longstocking, Undergraduate, English Literature, 94, 97, 92, 89, 96
+6945, Jeremiah Bullfrog, Graduate, Physics, 68, 74, 81, 72, 77
+1234, Donald Duck, Undergraduate, Statistics, 73, 81, 85, 78, 84
+3694, Roger Rabbit, Undergraduate, Linear Algebra, 92, 88, 95, 90, 93
+2589, Pippi Longstocking, Undergraduate, Microeconomics, 91, 87, 94, 89, 96
+8192, Penelope Watterson, Graduate, Data Structures, 85, 79, 88, 82, 90
+1234, Donald Duck, Undergraduate, Psychology, 96, 91, 94, 89, 97
+3694, Roger Rabbit, Undergraduate, Business Analytics, 74, 82, 79, 85, 88
+5263, Oliver Pickles, Undergraduate, Organic Chemistry, 83, 90, 86, 92, 88
+9472, Cassandra Moon, Graduate, English Literature, 78, 84, 89, 81, 86
+1234, Donald Duck, Undergraduate, Linear Algebra, 80, 87, 83, 91, 85
+3694, Roger Rabbit, Undergraduate, Microeconomics, 95, 89, 93, 96, 91
+2589, Pippi Longstocking, Undergraduate, Physics, 69, 77, 82, 74, 80
+9472, Cassandra Moon, Graduate, Art History, 91, 96, 94, 89, 97
+1234, Donald Duck, Undergraduate, Data Structures, 72, 79, 85, 81, 88
+4821, Amelia Thornberry, Undergraduate, Statistics, 86, 92, 89, 94, 90
+5263, Oliver Pickles, Undergraduate, Calculus, 84, 78, 91, 86, 89
+6945, Jeremiah Bullfrog, Graduate, Psychology, 95, 91, 88, 93, 96
+1234, Donald Duck, Undergraduate, Organic Chemistry, 61, 70, 76, 68, 73
+3694, Roger Rabbit, Undergraduate, English Literature, 83, 89, 92, 85, 90
+4821, Amelia Thornberry, Undergraduate, Business Analytics, 76, 82, 88, 79, 85
+8192, Penelope Watterson, Graduate, Microeconomics, 87, 93, 90, 85, 92
+1234, Donald Duck, Undergraduate, Art History, 89, 94, 91, 87, 96
+3694, Roger Rabbit, Undergraduate, Physics, 91, 86, 94, 89, 93
+2589, Pippi Longstocking, Undergraduate, Data Structures, 97, 93, 95, 91, 98
+6945, Jeremiah Bullfrog, Graduate, Linear Algebra, 63, 71, 78, 69, 75
+1234, Donald Duck, Undergraduate, Psychology, 78, 85, 81, 89, 84
+3694, Roger Rabbit, Undergraduate, Organic Chemistry, 72, 79, 85, 77, 83
+4821, Amelia Thornberry, Undergraduate, Statistics, 88, 94, 91, 96, 93
+6945, Jeremiah Bullfrog, Graduate, Calculus, 92, 87, 95, 90, 94
+1234, Donald Duck, Undergraduate, Microeconomics, 94, 89, 92, 96, 91
+4821, Amelia Thornberry, Undergraduate, Data Structures, 66, 74, 81, 70, 78
+4821, Amelia Thornberry, Undergraduate, English Literature, 81, 88, 85, 92, 87
+9472, Cassandra Moon, Graduate, Business Analytics, 84, 90, 87, 93, 89
+1234, Donald Duck, Undergraduate, Linear Algebra, 91, 85, 94, 88, 92
+3694, Roger Rabbit, Undergraduate, Art History, 76, 83, 89, 80, 86
+2589, Pippi Longstocking, Undergraduate, Psychology, 93, 96, 91, 95, 98
+8192, Penelope Watterson, Graduate, Organic Chemistry, 79, 86, 82, 89, 84

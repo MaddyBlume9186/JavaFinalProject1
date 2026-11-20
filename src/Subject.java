@@ -1,31 +1,31 @@
-public class Subject {
-    private String name;
-    private double grade;
+import java.util.ArrayList;
+import java.util.Objects;
 
-    public Subject(String name, double grade){
-        this.name = name;
-        this.grade = grade;
+public class Subject extends Student {
+    private String name;
+    private double average;
+
+
+
+    public Subject(String[] student, String subject, double average){
+        super(student);
+        if (student[3].equals(subject)){
+            this.name = student[1];
+            this.average = average;
+        }
+        else {
+            this.name = null;
+            this.average = 0;
+        }
+
     }
 
-    public String getName() {
+    public String getStudentName(){
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getGrade() {
-        return grade;
-    }
-
-    public void setGrade(double grade) {
-        this.grade = grade;
-    }
-
-    @Override // intentionally replacing default toString method here. 
-    public String toString() {
-        return name + " : " + grade;
+    public double getStudentAverage(){
+        return average;
     }
         
 

@@ -1,19 +1,29 @@
-public class Student{
+import java.util.ArrayList;
+public class Student {
     //attributes ID, name, grades, etc
     private String[] studentData;
     private int studID;
     private String name;
+    private String gradLevel;
     private String subject;
-    private int[] testScores = new int [5];
-    private int total = 0;
+    private ArrayList <Integer> testScores = new ArrayList<>();
+    private double total = 0.0;
     private double average;
 
-    public Student(String[] studentData){
+
+    public Student(String[] studentData) {
         this.studentData = studentData;
         setID(studentData[0]);
         this.name = studentData[1];
-        this.subject = studentData[2];
-        setTestScores(studentData[3], studentData[4], studentData[5], studentData[6], studentData[7]);
+        this.gradLevel = studentData[2];
+        this.subject = studentData[3];
+        for (int i = 4; i < studentData.length; i ++){
+            int score = Integer.parseInt(studentData[i].trim());
+            testScores.add(score);
+        }
+       // System.out.println(testScores.size());
+        setAverage(testScores);
+
     }
 
     public Student (int id, String name){
@@ -21,9 +31,18 @@ public class Student{
         this.name = name;
     }
 
-    public void GraduateStudent(int id, String name){
-
+    public Student(String name, double average){
+        this.name = name;
+        this.average = average;
     }
+
+    public String[] getStudent(){
+        return studentData;
+    }
+
+    public String getGradLevel(){
+    return gradLevel;}
+
 
     public void setID(String id){
         studID = Integer.parseInt(id);
@@ -43,15 +62,6 @@ public class Student{
         return subject;
     }
 
-    public void setTestScores(String test1, String test2, String test3, String test4, String test5){
-        testScores[0] = Integer.parseInt(test1);
-        testScores[1] = Integer.parseInt(test2);
-        testScores[2] = Integer.parseInt(test3);
-        testScores[3] = Integer.parseInt(test4);
-        testScores[4] = Integer.parseInt(test5);
-        setAverage(testScores);
-
-    }
 
      public String getLetterGrade(){
         // return letter grade back to main but also logic here or retrun a default grade/// i need to fix this. #########
@@ -63,15 +73,17 @@ public class Student{
         return "F";
     }
 
-    public int[] getTestScores(){
+    public ArrayList<Integer> getTestScores(){
         return testScores;
     }
 
-    public void setAverage(int[] scores){
-        for (int i = 0; i < scores.length; i++){
-            total+= scores[i];
+    public void setAverage(ArrayList <Integer> testScores){
+        //System.out.println(testScores.size());
+        this.testScores = testScores;
+        for (int i = 0; i < testScores.size(); i++){
+            total+= testScores.get(i);
         }
-        average = total / 5.0;
+        average = total / testScores.size();
     }
 
     public double getAverage(){
@@ -80,16 +92,19 @@ public class Student{
 
     @Override
     public String toString(){
-        return studID + "," + name + "," + subject + "," + testScores[0] + "," + testScores[1] + "," + testScores[2] + "," + testScores[3] + "," + testScores[4];
+        return studID + "," + name + "," + subject + "," + String.join(", ", testScores.toString());
+        }
+
+
+public void setTestScore(int score) throws InvalidInput {
+    try{
+        if (score < 0 || score > 100){
+        throw new InvalidInput("Grade must be between 0 and 100");
+    }}
+    catch (InvalidInput e){
+        System.out.println("Error: " + e.getMessage());
     }
-public void setTestScore(int index, int score) {
-    if (index < 0 || index >= testScores.length {
-        throw new IllegalArguementException("Test number must be 1-5");
-    }
-    if (score < 0 || score > 100){
-        throw new IllegalArguementException("Grade must be between 0 and 100");
-    }
-    testScores[index] = score;
+    testScores.add(score);
     setAverage(testScores);
 
-}
+}}
