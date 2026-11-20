@@ -1,11 +1,9 @@
 import java.util.ArrayList;
 public class Student {
-    //attributes ID, name, grades, etc
     private String[] studentData;
     private int studID;
     private String name;
     private String gradLevel;
-    private String subject;
     private ArrayList <Integer> testScores = new ArrayList<>();
     private double total = 0.0;
     private double average;
@@ -16,7 +14,6 @@ public class Student {
         setID(studentData[0]);
         this.name = studentData[1];
         this.gradLevel = studentData[2];
-        this.subject = studentData[3];
         for (int i = 4; i < studentData.length; i ++){
             int score = Integer.parseInt(studentData[i].trim());
             testScores.add(score);
@@ -31,10 +28,6 @@ public class Student {
         this.name = name;
     }
 
-    public Student(String name, double average){
-        this.name = name;
-        this.average = average;
-    }
 
     public String[] getStudent(){
         return studentData;
@@ -57,11 +50,6 @@ public class Student {
     public String getName(){
         return name;
     }
-
-    public String getSubject(){
-        return subject;
-    }
-
 
      public String getLetterGrade(){
         // return letter grade back to main but also logic here or retrun a default grade/// i need to fix this. #########
@@ -90,21 +78,15 @@ public class Student {
         return average;
     }
 
-    @Override
-    public String toString(){
-        return studID + "," + name + "," + subject + "," + String.join(", ", testScores.toString());
+    public void setTestScore(int score) throws InvalidInput {
+        try{
+            if (score < 0 || score > 100){
+            throw new InvalidInput("Grade must be between 0 and 100");
+        }}
+        catch (InvalidInput e){
+            System.out.println("Error: " + e.getMessage());
         }
-
-
-public void setTestScore(int score) throws InvalidInput {
-    try{
-        if (score < 0 || score > 100){
-        throw new InvalidInput("Grade must be between 0 and 100");
-    }}
-    catch (InvalidInput e){
-        System.out.println("Error: " + e.getMessage());
-    }
-    testScores.add(score);
-    setAverage(testScores);
+        testScores.add(score);
+        setAverage(testScores);
 
 }}

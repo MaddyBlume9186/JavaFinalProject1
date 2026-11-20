@@ -2,32 +2,23 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Subject extends Student {
+    private int studID;
     private String name;
-    private double average;
+    private String subject;
+    private ArrayList <Integer> testScores = new ArrayList<>();
 
-
-
-    public Subject(String[] student, String subject, double average){
+    public Subject(String[] student){
         super(student);
-        if (student[3].equals(subject)){
-            this.name = student[1];
-            this.average = average;
-        }
-        else {
-            this.name = null;
-            this.average = 0;
-        }
-
+        this.subject = student[3];
     }
 
-    public String getStudentName(){
-        return name;
+    public String getSubject(){
+        return subject;
     }
 
-    public double getStudentAverage(){
-        return average;
+    @Override
+    public String toString(){
+        return studID + "," + name + "," + subject + "," + String.join(", ", testScores.toString());
     }
-        
 
-    //attributes: name, grade, etc.
 }

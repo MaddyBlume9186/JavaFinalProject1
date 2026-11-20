@@ -1,4 +1,3 @@
-4821, Amelia Thornberry, Undergraduate, Biology, 91, 85, 88, 94, 90
 1234, Donald Duck, Undergraduate, Statistics, 92, 85, 78, 89, 94
 6945, Jeremiah Bullfrog, Graduate, Linear Algebra, 68, 75, 82, 79, 84
 8192, Penelope Watterson, Graduate, Psychology, 96, 93, 98, 91, 95
@@ -106,3 +105,4 @@
 3694, Roger Rabbit, Undergraduate, Art History, 76, 83, 89, 80, 86
 2589, Pippi Longstocking, Undergraduate, Psychology, 93, 96, 91, 95, 98
 8192, Penelope Watterson, Graduate, Organic Chemistry, 79, 86, 82, 89, 84
+4821, Amelia Thornberry, Undergraduate, Biology, 91, 85, 88, 94, 90, 99, 85
